@@ -1,0 +1,40 @@
+{
+    "kiran": {
+        "password": "i+s9hLUaspbJsBzfq/AWxYrNca2A4EeE9/sw+iOax8w=",
+        "loggedIn": true,
+        "token": "PGBpqtBJrPOez7zB",
+        "scope": "all",
+        "cookie": ""
+    },
+    "jay": {
+        "password": "2qQ0kukSUCV1tRhA1l2dm0IijjQFDmtoUi1cRmqWHkw=",
+        "loggedIn": true,
+        "token": "m3l9bbRUMQFKFWgu",
+        "scope": "all"
+    },
+    "guest": {
+        "password": "XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=",
+        "loggedIn": true,
+        "token": "qGhFWIm4bkxnV9Sz",
+        "scope": "monitoring"
+    },
+    "guest2": {
+        "password": "XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=",
+        "loggedIn": true,
+        "token": "mNMBeg2EVZMw3Qh4",
+        "scope": "monitoring"
+    },
+    "guest3": {
+        "password": "i+s9hLUaspbJsBzfq/AWxYrNca2A4EeE9/sw+iOax8w=",
+        "loggedIn": false,
+        "token": "mGnev07IdzMzP0Cz",
+        "scope": "monitoring",
+        "cookie": ""
+    },
+    "DB_user": {
+        "user": "sharpview_amrs",
+        "pass": "xSBadLK0vbo+aokdGn9LlD7aUWb+HFG8aJYi2fmwDYU=",
+        "database": "SharpView_AMRS_development_site",
+        "scope": "all"
+    }
+}

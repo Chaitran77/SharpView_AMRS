@@ -1,0 +1,48 @@
+{
+    "id": "Egmanton-development",
+    "HW_ID" : "",
+    "IP_addr": "192.168.0.175",
+    "monitoring_port": 8000,
+    "support_email": "kiran@inteleyes.com",
+
+    "sensor_setup": {
+        "normally_closed": false // true for production, false if N/O switches are in use for development
+    },
+    
+    "alarm_actions": {
+        "email": true,
+        "onsite_alarm": true,
+        "TCP_alarm": true
+    },
+    
+    "email": {
+        "address": "alarmsender@sharpview.tv",
+        "smtp_server": "smtp.ionos.co.uk",
+        "port": 465,
+        "auth": {
+            "user": "alarmsender@sharpview.tv",
+            "pass": "Sh4rpV!3w"
+        },
+
+        "recipient_list": "kiran@inteleyes.com, jay@inteleyes.com"
+    },
+
+    "TCP_alarm_config": [
+        {
+            "IP": "",
+            "port": "",
+            "protocol": ""
+        },
+        
+        {
+            "IP": "",
+            "port": "",
+            "protocol": ""
+        }
+    ],
+
+    "license": {
+        "key": "---",
+        "upper_sensor_limit": 150
+    }
+}

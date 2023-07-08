@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMRS Login</title>
+</head>
+<body>
+    <script src="utils.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless@4/borderless.css" rel="stylesheet">
+    <script>
+
+        // async function hashFromString(string) {
+        //     const hash = await window.crypto.subtle.digest("SHA-256", (new TextEncoder()).encode(string))
+        //     return btoa(String.fromCharCode(...new Uint8Array(hash)))
+        // }
+
+        var params = new URLSearchParams(window.location.search);
+        var target = params.get("target")==null?"/monitoring":window.location.toString().split("?")[1].split("=")[1];
+        console.log(target)
+
+        function attemptLogin() {
+            
+            (async () => {
+                document.addEventListener("keypress", function(event) {
+                    if (event.key == "Enter") {
+                        document.getElementsByClassName("swal2-confirm")[0].click();
+                    }
+                })
+                const {value: credentials} = await Swal.fire({
+                    title: "Login: ",
+                    html: '<input id="swal-user-input" class="swal2-input" placeholder="username"><br><input id="swal-pass-input" class="swal2-input" type="password" placeholder="password">',
+                    allowEnterKey: true,
+                    preConfirm: () => {
+                        return [
+                            document.getElementById('swal-user-input').value,
+                            document.getElementById('swal-pass-input').value
+                        ]
+                    }
+                })
+                if (credentials) {
+                    
+                    var loginData = {
+                            user: credentials[0],
+                            pass: CryptoJS.enc.Base64.stringify(CryptoJS.SHA256(credentials[1])),
+                            targetPage: target
+                        }
+        
+                    console.log(loginData);
+            
+                    // send to server, server "logs in" user, then redirects
+                    $.post("/login-user", loginData, function(data, status, xhr) {
+
+                        window.location.href = decodeURIComponent(loginData.targetPage);
+                        return true;
+                        
+                    }).fail(function(response) {
+                        alert(response.responseText);
+                        attemptLogin();
+                    })
+                }
+            })()
+            
+        }
+
+        attemptLogin();
+
+    </script>
+
+    <style>
+        .swal2-title {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+    </style>
+</body>
+</html>

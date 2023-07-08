@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMRS Configuration</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" async defer></script>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.css" integrity="sha512-EF5k2tHv4ShZB7zESroCVlbLaZq2n8t1i8mr32tgX0cyoHc3GfxuP7IoT8w/pD+vyoq7ye//qkFEqQao7Ofrag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link href=/bootstrap.min.css rel="stylesheet"/>
+    <link href=/bootstrap-responsive.min.css rel="stylesheet"/>
+    <script src="jsoneditor.js"></script>
+    
+    <link href="/dist/css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/semantic-ui/tabulator_semantic-ui.min.css">
+    <script type="text/javascript" src="/dist/js/tabulator.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js" type="text/javascript"></script> -->
+    
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/global_style.css">
+
+</head>
+<body>
+
+    <div id="top-nav">
+        <h2>AMRS System Configuration Page</h2>
+        <span><a href="#basic" onclick="change_form('basic')">Basic</a></span><span><a href="#datetime" onclick="change_form('datetime')">Datetime</a></span><span><a href="#network" onclick="change_form('network')">Network</a></span><span><a href="#device" onclick="change_form('device')">Devices</a></span><span><a href="#action" onclick="change_form('action')">Action</a></span>
+    </div>
+
+    <div id="basic_config_form">
+        <h3>Basic: </h3>
+        <form action="update-system-config" method="post">
+            <div>
+                <label for="name">Name</label>
+                <span><input id="name" name="name" type="number" min="0" max="8" required></span>
+            </div>
+
+            <div>
+                <label for="HW_ID">Hardware ID</label>
+                <span><input id="HW_ID" name="HW_ID" type="text" disabled></span>
+            </div>
+            
+        </form>
+    </div>
+
+    <div id="datetime_config_form">
+        <h3>Date and Time: </h3>
+        <form action="update-system-config" method="post">
+            
+        </form>
+    </div>
+
+    <div id="network_config_form">
+        <h3>Network: </h3>
+        <form action="update-system-config" method="post">
+            <div>
+                <label for="IP_addr">Local IP Address</label>
+                <span><input id="IP_addr" name="IP_addr" type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" required></span>
+            </div>
+
+            <div>
+                <label for="gateway_IP_addr">Gateway</label>
+                <span><input id="gateway_IP_addr" name="gateway_IP_addr" type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" required></span>
+            </div>
+
+            <div>
+                <label for="netmask">Netmask</label>
+                <span><input id="netmask" name="netmask" type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" required></span>
+            </div>
+            
+            <div>
+                <label for="DNS1">Primary DNS</label>
+                <span><input id="DNS1" name="DNS1" type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" required></span>
+            </div>
+
+            <div>
+                <label for="DNS2">Secondary DNS</label>
+                <span><input id="DNS2" name="DNS2" type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"></span>
+            </div>
+            
+        </form>
+    </div>
+
+    <div id="device_config_form">
+
+        <div id="sensor_section">
+            <h3>Sensors: </h3>
+            <form id="addSensorForm" method="post" action="add-sensor" target="config-redirect" autocomplete="on">
+                <div>
+                    <label for="sensor_code">Sensor Code		<div data-tooltip="Information about this property" class="sensor-info-tooltip">&#9432;</div></label>
+					<span><input id="sensor_code" name="sensor_code" type="text" maxlength="10" required></span>
+				</div>
+                
+				<div>
+                    <label for="converter_id">Converter ID		<div data-tooltip="The ID of the Serial Device Server (NPort) that this sensor is physically wired to (using RS485 2-wire)" class="sensor-info-tooltip">&#9432;</div></label>
+                    <span><input id="converter_id" name="converter_id" type="number" min="0" max="8" required></span>
+                </div>
+
+                <div>
+                    <label for="modbus_address">Modbus address		<div data-tooltip="Information about this property" class="sensor-info-tooltip">&#9432;</div></label>
+                    <span><input id="modbus_address" name="modbus_address" type="number" min="0" max="20" required></span>
+                </div>
+
+                <div>
+                    <label for="w3w_location">What3Words location		<div data-tooltip="Information about this property" class="sensor-info-tooltip">&#9432;</div></label>
+                    <span><input id="w3w_location" name="w3w_location" type="text" required></span>
+                </div>
+
+                <div>
+                    <label for="manufacturer">Manufacturer		<div data-tooltip="Information about this property" class="sensor-info-tooltip">&#9432;</div></label>
+                    <span><input id="manufacturer" name="manufacturer" type="text" required></span>
+                </div>
+
+                <div>
+                    <label for="model">Model		<div data-tooltip="Information about this property" class="sensor-info-tooltip">&#9432;</div></label>
+                    <span><input id="model" name="model" type="text" required></span>
+                </div>
+
+                <!-- <div>
+                    <label for="model">Colour		<div data-tooltip="Information about this property" class="sensor-info-tooltip">&#9432;</div></label>
+                    <span><input id="colour" name="colour" type="color"></span>
+                </div> -->
+                
+                <button type="submit">Add sensor</button>
+            </form>
+            
+            
+            <div id="sensor_table_wrapper"></div>
+            <button id="sensorsApplyChangesButton" class="applyChangesButton" onclick="postTableChanges('sensor_table')">Apply Changes</button>
+
+        </div>
+
+        <br><br>
+
+        <div id="converter_section">
+            <h3>Converters: </h3>
+            <form id="addConverterForm" method="post" action="add-converter" target="config-redirect" autocomplete="on">
+
+                <div>
+                    <label for="ip_address">IP address</label>
+                    <span><input id="ip_address" name="ip_address" type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" required></span>
+                </div>
+
+                <div>
+                    <label for="port">Port</label>
+                    <span><input id="port" name="port" type="number" min="0" max="65536" required></span>
+                </div>
+
+                <div>
+                    <label for="inverter_station">Inverter Station</label>
+                    <span><input id="inverter_station" name="inverter_station" type="text" required></span>
+                </div>
+
+				<div>
+                    <label for="manufacturer">Manufacturer		<div data-tooltip="Information about this property" class="converter-info-tooltip">&#9432;</div></label>
+                    <span><input id="manufacturer" name="manufacturer" type="text" required></span>
+                </div>
+
+                <div>
+                    <label for="model">Model		<div data-tooltip="Information about this property" class="converter-info-tooltip">&#9432;</div></label>
+                    <span><input id="model" name="model" type="text" required></span>
+                </div>
+
+
+                <button type="submit">Add converter</button>
+            </form>
+
+            <div id="converter_table_wrapper"></div>
+            <button id="convertersApplyChangesButton" class="applyChangesButton" onclick="postTableChanges('converter_table')">Apply Changes</button>
+        </div>
+    </div>
+
+    <div id="action_config_form">
+        <h2>Actions: </h2>
+        <p>Use this page to configure what actions should be taken when a sensor is tripped.</p>
+        <form action="update-system-config?action" method="post">
+                <h3>Sender Credentials:</h3>
+                <div>
+                    <label for="smtp-server">SMTP Server</label>
+                    <span><input id="smtp-server" name="smtp_server" type="url" required></span>
+                </div>
+
+                <div>
+                    <label for="email-username">Username</label>
+                    <span><input id="email-username" name="user" type="email" required></span>
+                </div>
+
+                <div>
+                    <label for="email-password">Password</label>
+                    <span><input id="email-password" name="pass" type="password" required></span>
+                </div>
+
+                <h3>Recipients:</h3>
+                <div>
+                    <label for="alarm-recipient-emails">A comma-separated list of emails</label>
+                    <span><input id="alarm-recipient-emails" name="recipient_list" style="width: 500px" type="email" multiple required></span>
+                </div>
+                <button type="submit" class="applyChangesButton">Apply Changes</button>
+        </form>
+    </div>
+
+    
+    <script src="/globalElementLoader.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

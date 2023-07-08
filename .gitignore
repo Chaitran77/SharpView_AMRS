@@ -1,0 +1,8 @@
+node_modules/*
+frontend/configuration/jsoneditor_style.css
+frontend/configuration/jsoneditor.js
+frontend/configuration/main.js.old
+frontend/dist/*
+frontend/global_assets/mermaid.min.css
+frontend/global_assets/bootstrap-responsive.min.css
+frontend/global_assets/bootstrap.min.css

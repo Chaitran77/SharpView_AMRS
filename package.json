@@ -1,0 +1,25 @@
+{
+  "name": "sharpview_amrs",
+  "version": "1.0.0",
+  "description": "Asset Monitoring and Recording System by SharpView",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "restart": "forever stop 0 && forever start index.js",
+    "stop": "forever stop 0"
+  },
+  "author": "Kiran Patel (SharpView Ltd)",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "express-session": "^1.17.2",
+    "modbus-serial": "^8.0.3",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.6.3",
+    "passport": "^0.4.1",
+    "public-ip": "^6.0.1",
+    "rand-token": "^1.0.1"
+  }
+}

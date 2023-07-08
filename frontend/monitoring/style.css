@@ -1,0 +1,78 @@
+/* #grid_view {
+    white-space: pre-line; 
+} */
+
+h2 > div, h4 > div {
+    display: inline-block;
+}
+
+.sensor_dot {
+    width: 15px;
+    height: 15px;
+    
+    border: 2px solid white;
+    border-radius: 50%;
+
+    display: inline-block;
+    
+    margin: 10px;
+}
+
+.sensor_dot_low {
+    background-color: greenyellow;
+}
+
+.sensor_dot_high {
+    background-color: red;
+}
+
+.sensor_dot_warn {
+    background-color: orange;
+}
+
+.tabulator {
+    width: min-content;
+}
+
+.tabulator-row .tabulator-cell {
+    padding: 10px 16px;
+}
+
+.tabulator-editing {
+    line-height: 50px;
+}
+
+@keyframes new-event-animation {
+    0% {
+        background-color: red;
+    }
+
+    25% {
+        background-color: orange;
+    }
+
+    50% {
+        background-color: orange;
+    }
+
+    100% {
+        background-color: red;
+    }
+
+}
+
+.new-event-colour {
+    background-color: red;
+    animation: new-event-animation 1.5s linear 0s infinite none;
+}
+
+
+
+#alarm_icon {
+    width: 150px;
+    height: auto;
+    position: fixed;
+    right: 500px;
+    top: 150px;
+    display: none;
+}

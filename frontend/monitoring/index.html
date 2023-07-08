@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/dist/css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/semantic-ui/tabulator_semantic-ui.min.css">
+    <script type="text/javascript" src="/dist/js/tabulator.min.js"></script>
+
+    <link rel="stylesheet" href="/global_style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>AMRS Monitoring</title>
+</head>
+
+<body>
+    <h1>Welcome to the Asset Monitoring and Recording System. </h1>
+    <p>Use this page to monitor your site.</p>
+    <br>
+    
+    <h2>Site name: <div id="site-name-label"></div></h2>
+    
+    <h4>Site's Public IP: <div id="site-ip-label"></div><br>
+        Email address: <div id="site-email-label"></div></h4>
+        
+        
+    <div id="grid_view">
+        
+    </div>
+        
+    <img src="media/images/alarm-icon.png" id="alarm_icon" srcset="">
+
+    <div id="alarms_section">
+        <h3>Alarms: </h3>
+        
+
+        <div id="alarms_table_wrapper"></div>
+    </div>
+    
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/globalElementLoader.js"></script>
+<script src="main.js"></script>
+</body>
+
+</html>
